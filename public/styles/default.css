@@ -1,0 +1,62 @@
+﻿body {
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.marquee {
+    background-color: #000078;
+    color: white;
+}
+
+.button {
+    width: 250px;
+    height: 50px;
+    margin: 10px 15px 10px 15px;
+}
+
+#logo {
+    width: 105px;
+    margin: 20px auto;
+}
+
+.spin {
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 3000ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+
+    -moz-animation-name: spin;
+    -moz-animation-duration: 3000ms;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+
+    -ms-animation-name: spin;
+    -ms-animation-duration: 3000ms;
+    -ms-animation-iteration-count: 1;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: spin;
+    animation-duration: 3000ms;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
