@@ -3,6 +3,7 @@ var app = express()
 
 app.use('/', express.static(__dirname + '/public'));
 
-app.listen(3000, function () {
-  console.log('Listening on port 3000!')
+var port = process.env.PORT || 3000;
+app.listen(port, function () {
+  console.log('Listening on port ' + port);
 })
