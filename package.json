@@ -1,0 +1,23 @@
+{
+  "name": "baabababababaa",
+  "version": "1.0.0",
+  "description": "Node server, simple html/js/css app to press a button and play a dope soundclip",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ejh891/baabababababaa.git"
+  },
+  "keywords": [
+    "airhorn",
+    "baabababababaa"
+  ],
+  "author": "ejh891",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ejh891/baabababababaa/issues"
+  },
+  "homepage": "https://github.com/ejh891/baabababababaa#readme"
+}
