@@ -7,6 +7,12 @@
     font-size: 300%;
     margin-top: 20px;
     margin-bottom: 20px;
+    width: 100%;
+}
+
+#count {
+    font-family: arial, Helvetica, sans-serif;
+    font-size: 16px;
 }
 
 #logo {
