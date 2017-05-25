@@ -1,15 +1,17 @@
-var $audio;
+var audioElem;
 var $button;
 var $count;
 var counter;
+var $logo;
 
 document.addEventListener("DOMContentLoaded", function (ev) {
-    $audio = document.getElementById("audio");
-    $button = document.getElementById("button")
-    $count = document.getElementById("count");
+    audioElem = document.getElementById("audio");
+    $button = $("#button");
+    $count = $("#count");
     counter = 0;
+    $logo = $("#logo");
 
-    $audio.load();
+    audioElem.load();
 
     getServerSideCount();
     window.setInterval(getServerSideCount, 3000);
@@ -18,14 +20,14 @@ document.addEventListener("DOMContentLoaded", function (ev) {
 });
 
 function bindAudioFunctions() {
-    $audio.onplay = function () {
+    audioElem.onplay = function () {
         $button.prop("disabled", true);
-        $("#logo").addClass("spin");
+        $logo.addClass("spin");
     }
 
-    $audio.onended = function () {
+    audioElem.onended = function () {
         $button.prop("disabled", false);
-        $("#logo").removeClass("spin");
+        $logo.removeClass("spin");
     }
 }
 
@@ -35,11 +37,11 @@ function buttonClicked() {
 }
 
 function play() {
-    $audio.play();
+    audioElem.play();
 }
 
 function displayCount() {
-    $count.innerHTML = counter;
+    $count.text(counter);
 }
 
 function getServerSideCount() {
