@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", function (ev) {
     counter = 0;
 
     $audio.load();
+
     getServerSideCount();
+    window.setInterval(getServerSideCount, 3000);
 
     bindAudioFunctions();
 });
