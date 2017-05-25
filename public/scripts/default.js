@@ -41,10 +41,10 @@ function displayCount() {
 
 function getServerSideCount() {
     $.ajax({
-        url: "res/count.txt?"+ Math.random(),
+        url: "/readCounter",
         method: "GET",
         success: function(data) {
-            counter = data;
+            counter = data.count;
             displayCount();
         },
         error: function(xhr, textstatus, error) {
