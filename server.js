@@ -2,35 +2,54 @@ var fs = require('fs');
 var express = require('express')
 var app = express()
 
-var readCounter = function() {
-  var filename = __dirname + '/public/res/count.txt';
-  var content = fs.readFileSync(filename, 'utf-8');
-  var count = parseInt(content, 10);
-  if (count === NaN) {
-    console.error('Count could not be parsed');
-    return 0;
-  }
+var BababasDb = require('./db/bababas');
+var Bababa = BababasDb; // BababasDb object overloaded as constructor; split it up
 
-  return count;
+var COUNT;
+
+var readCounter = function(callback) {
+    if (COUNT !== undefined) {
+      var result = {};
+      result._doc = {};
+      result._doc.count = COUNT;
+      callback(undefined, result);
+    }
+    else {
+      BababasDb.findOne({}, callback);
+    }
 };
 
 var writeCounter = function(newCount) {
-  var filename = __dirname + '/public/res/count.txt';
-  fs.writeFileSync(filename, newCount, 'utf-8');
+    BababasDb.findOneAndUpdate({}, {count: newCount}, function(err, counter) {
+        if (err) {
+          console.log(err);
+        } else {
+          COUNT++;
+        }
+    });
 };
 
 app.use('/', express.static(__dirname + '/public'));
 
 app.post('/incrementCounter', function(req, res) {
-  var count = readCounter();
-  count++;
-  writeCounter(count);
+  writeCounter(COUNT + 1);
 });
 
 app.get('/readCounter', function(req, res) {
   var data = {};
-  data.count = readCounter();
-  res.json(data);
+  readCounter(function(err, result) {
+      if (err) { 
+        console.log(err);
+      }
+      else if (!result) {
+        console.log('No documents found in database');
+      }
+      else {
+        COUNT = result._doc.count;
+        data.count = COUNT;
+        res.json(data);
+      }
+    });
 });
 
 var port = process.env.PORT || 3000;

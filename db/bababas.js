@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-var dbUser = process.env.DBUSER || 'dev';
-var dbPass = process.env.DBPASS || 'friskydingo';
+var dbUser = process.env.DBUSER;
+var dbPass = process.env.DBPASS;
 mongoose.connect('mongodb://' + dbUser + ':' + dbPass + '@ds153521.mlab.com:53521/baabababababaa');
 
 var bababasSchema = mongoose.Schema({
