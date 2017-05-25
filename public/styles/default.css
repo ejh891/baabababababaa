@@ -3,9 +3,10 @@
     text-align: center;
 }
 
-.marquee {
-    background-color: #000078;
-    color: white;
+#button {
+    font-size: 300%;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #logo {
