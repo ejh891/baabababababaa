@@ -37,7 +37,6 @@ function play() {
 }
 
 function displayCount() {
-    console.log(counter);
     $count.innerHTML = counter;
 }
 
