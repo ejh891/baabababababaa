@@ -1,9 +1,11 @@
 var $audio;
+var $button;
 var $count;
 var counter;
 
 document.addEventListener("DOMContentLoaded", function (ev) {
     $audio = document.getElementById("audio");
+    $button = document.getElementById("button")
     $count = document.getElementById("count");
     counter = 0;
 
@@ -17,12 +19,12 @@ document.addEventListener("DOMContentLoaded", function (ev) {
 
 function bindAudioFunctions() {
     $audio.onplay = function () {
-        $(".button").prop("disabled", true);
+        $button.prop("disabled", true);
         $("#logo").addClass("spin");
     }
 
     $audio.onended = function () {
-        $(".button").prop("disabled", false);
+        $button.prop("disabled", false);
         $("#logo").removeClass("spin");
     }
 }
