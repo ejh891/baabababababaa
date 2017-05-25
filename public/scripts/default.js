@@ -54,7 +54,7 @@ function getServerSideCount() {
 }
 
 function incrementCounter() {
-    $.ajax({ url: "scripts/incrementCounter.php" });
+    $.ajax({ url: "/incrementCounter", method: "POST" });
     counter++;
     displayCount();
 }
