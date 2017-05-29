@@ -85,7 +85,7 @@ app.get('/subscribeToCounter', function(req, res) {
         subscribers.splice(subscriberIndex, 1);
         subscriber.res.json({});
       }
-    }, 30*1000)
+    }, 25*1000)
   };
   console.log("registered subscriber: " + subscriber.id);
   subscribers.push(subscriber);
