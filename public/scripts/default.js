@@ -73,6 +73,9 @@ function subscribeToCounter() {
             subscribeToCounter();
         },
         error: function(xhr, textstatus, error) {
+            if (xhr.status === 503) {
+                subscribeToCounter();
+            }
             console.error(xhr, textstatus, error);
         }
     });
