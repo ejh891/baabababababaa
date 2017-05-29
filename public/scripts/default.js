@@ -12,11 +12,10 @@ document.addEventListener("DOMContentLoaded", function (ev) {
     $logo = $("#logo");
 
     audioElem.load();
+    bindAudioFunctions();
 
     getServerSideCount();
-    window.setInterval(getServerSideCount, 3000);
-
-    bindAudioFunctions();
+    subscribeToCounter();
 });
 
 function bindAudioFunctions() {
@@ -60,6 +59,21 @@ function getServerSideCount() {
 
 function incrementCounter() {
     $.ajax({ url: "/incrementCounter", method: "POST" });
-    counter++;
-    displayCount();
+}
+
+function subscribeToCounter() {
+    $.ajax({
+        url: "/subscribeToCounter",
+        method: "GET",
+        success: function(data) {
+            if (data.count !== undefined) {
+                counter = data.count;
+                displayCount();
+            }
+            subscribeToCounter();
+        },
+        error: function(xhr, textstatus, error) {
+            console.error(xhr, textstatus, error);
+        }
+    });
 }
